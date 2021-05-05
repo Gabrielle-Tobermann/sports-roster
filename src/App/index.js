@@ -6,11 +6,17 @@ import NavBar from '../components/NavBar';
 import Routes from '../helpers/routes';
 import './App.scss';
 import firebaseConfig from '../helpers/apiKeys';
+import { getPlayers } from '../helpers/data/playerData';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState(null);
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    getPlayers(user).then((response) => setPlayers(response));
+  }, []);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -34,7 +40,9 @@ function App() {
      <NavBar
      user={user}
      />
-     <Routes/>
+     <Routes
+     players={players}
+     />
    </Router>
    </>
   );
