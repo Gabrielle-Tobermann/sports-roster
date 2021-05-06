@@ -42,6 +42,7 @@ function App() {
      />
      <Routes
      players={players}
+     setPlayers={setPlayers}
      />
    </Router>
    </>
