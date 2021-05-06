@@ -20,7 +20,7 @@ function Team({ players }) {
 }
 
 Team.propTypes = {
-  players: PropTypes.array.isRequired
+  players: PropTypes.array.isRequired,
 };
 
 export default Team;
