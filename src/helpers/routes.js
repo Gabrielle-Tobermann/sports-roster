@@ -6,7 +6,7 @@ import Team from '../views/Team';
 import SinglePlayer from '../views/SinglePlayer';
 import SignIn from '../views/SignIn';
 
-function Routes({ players, setPlayers }) {
+function Routes({ players, setPlayers, user }) {
   return (
     <div>
       <Switch>
@@ -19,6 +19,7 @@ function Routes({ players, setPlayers }) {
         <Route path='/team/:firebaseKey' component={SinglePlayer}/>
         <Route path='/add-player' component={() => <AddPlayer
         setPlayers={setPlayers}
+        user={user}
       />
       } />
       </Switch>
@@ -28,7 +29,8 @@ function Routes({ players, setPlayers }) {
 
 Routes.propTypes = {
   players: PropTypes.array.isRequired,
-  setPlayers: PropTypes.func.isRequired
+  setPlayers: PropTypes.func.isRequired,
+  user: PropTypes.any
 };
 
 export default Routes;
