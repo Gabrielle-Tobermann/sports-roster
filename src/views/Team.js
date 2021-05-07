@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerCard from '../components/PlayerCard';
 
-function Team({ players }) {
+function Team({ players, user }) {
   return (
     <>
     <div className='App'>
@@ -12,6 +12,7 @@ function Team({ players }) {
         name={playerInfo.name}
         position={playerInfo.position}
         imageUrl={playerInfo.imageUrl}
+        user={user}
         />
       ))}
     </div>
@@ -21,6 +22,7 @@ function Team({ players }) {
 
 Team.propTypes = {
   players: PropTypes.array.isRequired,
+  user: PropTypes.any
 };
 
 export default Team;

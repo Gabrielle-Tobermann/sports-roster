@@ -9,7 +9,9 @@ function PlayerCard({
   name,
   imageUrl,
   position,
+  user,
 }) {
+  console.warn(user);
   return (
     <div>
        <Card>
@@ -28,6 +30,7 @@ PlayerCard.propTypes = {
   name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
+  user: PropTypes.any
 };
 
 export default PlayerCard;
