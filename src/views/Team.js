@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerCard from '../components/PlayerCard';
 
-function Team({ players, user }) {
+function Team({ players, user, setPlayers }) {
   return (
     <>
     <div className='App'>
@@ -13,6 +13,9 @@ function Team({ players, user }) {
         position={playerInfo.position}
         imageUrl={playerInfo.imageUrl}
         user={user}
+        uid={playerInfo.uid}
+        setPlayers={setPlayers}
+        firebaseKey={playerInfo.firebaseKey}
         />
       ))}
     </div>
@@ -22,7 +25,8 @@ function Team({ players, user }) {
 
 Team.propTypes = {
   players: PropTypes.array.isRequired,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setPlayers: PropTypes.func
 };
 
 export default Team;
