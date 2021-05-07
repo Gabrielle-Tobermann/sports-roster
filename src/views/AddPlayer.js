@@ -15,10 +15,7 @@ function AddPlayer({ setPlayers, user }) {
 
 AddPlayer.propTypes = {
   setPlayers: PropTypes.func.isRequired,
-  user: PropTypes.any,
-  name: PropTypes.string,
-  position: PropTypes.string,
-  imageUrl: PropTypes.string,
+  user: PropTypes.any
 };
 
 export default AddPlayer;

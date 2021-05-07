@@ -15,10 +15,6 @@ function App() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    getPlayers(user).then((response) => setPlayers(response));
-  }, []);
-
-  useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
         const userObj = {
@@ -34,6 +30,11 @@ function App() {
     });
   }, []);
 
+  console.warn('user', user);
+  useEffect(() => {
+    getPlayers(user).then((response) => setPlayers(response));
+  }, []);
+
   return (
    <>
    <Router>
@@ -43,6 +44,7 @@ function App() {
      <Routes
      players={players}
      setPlayers={setPlayers}
+     user={user}
      />
    </Router>
    </>

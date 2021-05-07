@@ -11,19 +11,19 @@ import { addPlayer } from '../helpers/data/playerData';
 
 function AddPlayerForm(
   {
-    name,
-    position,
-    imageUrl,
+    // name,
+    // position,
+    // imageUrl,
     setPlayers,
-    uid,
+    // uid,
     user,
   }
 ) {
   const [player, setPlayer] = useState({
-    name: name || '',
-    position: position || '',
-    imageUrl: imageUrl || '',
-    uid: uid || user.uid
+    name: '',
+    position: '',
+    imageUrl: '',
+    uid: user.uid
   });
 
   const handleInputChange = (e) => {
@@ -33,8 +33,9 @@ function AddPlayerForm(
     }));
   };
 
-  const handleSubmit = () => {
-    addPlayer(player).then((playerObj) => setPlayers(playerObj));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addPlayer(player, user).then((playerObj) => setPlayers(playerObj));
   };
 
   return (
@@ -42,15 +43,15 @@ function AddPlayerForm(
       <Form>
       <FormGroup>
         <Label for="name">Name:</Label>
-        <Input type="text" name="name" id="playerName" onChange={handleInputChange} placeholder="Enter the player's name" />
+        <Input type="text" name="name" id="playerName" value={player.name} onChange={handleInputChange} placeholder="Enter the player's name" />
       </FormGroup>
       <FormGroup>
         <Label for="name">Position:</Label>
-        <Input type="text" name="position" id="playerPosition" onChange={handleInputChange} placeholder="Enter the player's position" />
+        <Input type="text" name="position" id="playerPosition" value={player.position} onChange={handleInputChange} placeholder="Enter the player's position" />
       </FormGroup>
       <FormGroup>
         <Label for="image">Photo:</Label>
-        <Input type="text" name="imageUrl" id="playerImage" onChange={handleInputChange} placeholder="Enter the player's photo" />
+        <Input type="text" name="imageUrl" id="playerImage" value={player.imageUrl} onChange={handleInputChange} placeholder="Enter the player's photo" />
       </FormGroup>
       <Button type="submit" onClick={handleSubmit}>Submit New Player</Button>
       </Form>
@@ -62,9 +63,9 @@ AddPlayerForm.propTypes = {
   name: PropTypes.string,
   position: PropTypes.string,
   imageUrl: PropTypes.string,
+  uid: PropTypes.string,
   setPlayers: PropTypes.func,
   user: PropTypes.any,
-  uid: PropTypes.string
 };
 
 export default AddPlayerForm;
