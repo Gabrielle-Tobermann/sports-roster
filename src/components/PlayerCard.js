@@ -33,8 +33,8 @@ function PlayerCard({
         <CardBody>
           <CardTitle tag="h5">{name}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">{position}</CardSubtitle>
-          <Button onClick={() => handleClick('delete')}>Delete Player</Button>
-          <Button onClick={() => handleClick('edit')}>Edit Player</Button>
+          <Button className="card-button" color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
+          <Button className="card-button" color="primary" onClick={() => handleClick('edit')}>Edit Player</Button>
         </CardBody>
         {
       editing && <AddPlayerForm

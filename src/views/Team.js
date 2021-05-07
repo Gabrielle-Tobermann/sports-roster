@@ -5,7 +5,7 @@ import PlayerCard from '../components/PlayerCard';
 function Team({ players, user, setPlayers }) {
   return (
     <>
-    <div className='App'>
+    <div className='App d-flex flex-wrap justify-content-center'>
       {players.map((playerInfo) => (
         <PlayerCard
         key={playerInfo.firebaseKey}
