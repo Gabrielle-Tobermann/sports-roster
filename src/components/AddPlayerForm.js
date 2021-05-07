@@ -7,23 +7,25 @@ import {
   Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { addPlayer } from '../helpers/data/playerData';
+import { addPlayer, updatePlayer } from '../helpers/data/playerData';
 
 function AddPlayerForm(
   {
-    // name,
-    // position,
-    // imageUrl,
+    name,
+    position,
+    imageUrl,
     setPlayers,
-    // uid,
+    uid,
     user,
+    firebaseKey
   }
 ) {
   const [player, setPlayer] = useState({
-    name: '',
-    position: '',
-    imageUrl: '',
-    uid: user.uid
+    name: name || '',
+    position: position || '',
+    imageUrl: imageUrl || '',
+    uid: uid || user.uid,
+    firebaseKey: firebaseKey || null
   });
 
   const handleInputChange = (e) => {
@@ -35,7 +37,12 @@ function AddPlayerForm(
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPlayer(player, user).then((playerObj) => setPlayers(playerObj));
+    console.warn(player.firebaseKey);
+    if (player.firebaseKey) {
+      updatePlayer(player, user).then((playerObj) => setPlayers(playerObj));
+    } else {
+      addPlayer(player, user).then((playerObj) => setPlayers(playerObj));
+    }
   };
 
   return (
@@ -66,6 +73,7 @@ AddPlayerForm.propTypes = {
   uid: PropTypes.string,
   setPlayers: PropTypes.func,
   user: PropTypes.any,
+  firebaseKey: PropTypes.string
 };
 
 export default AddPlayerForm;

@@ -14,7 +14,7 @@ function Routes({ players, setPlayers, user }) {
        component={SignIn}
         />
         <Route exact path='/team'
-        component={() => <Team players={players} user={user}/>}
+        component={() => <Team players={players} setPlayers={setPlayers} user={user}/>}
         />
         <Route path='/team/:firebaseKey' component={SinglePlayer}/>
         <Route path='/add-player' component={() => <AddPlayer
