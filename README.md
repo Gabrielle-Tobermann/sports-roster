@@ -1,7 +1,7 @@
 # Sports Roster
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f29bf446-57a7-436d-8cd1-fb5850c43b53/deploy-status)](https://app.netlify.com/sites/gt-sports-roster/deploys)
 
-##Deployed Link 
+## Deployed Link 
 https://gt-sports-roster.netlify.app/
 
 ## Overview 
