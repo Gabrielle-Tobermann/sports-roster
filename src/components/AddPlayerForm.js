@@ -39,7 +39,6 @@ function AddPlayerForm(
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(player.firebaseKey);
     if (player.firebaseKey) {
       updatePlayer(player, user).then((playerObj) => setPlayers(playerObj));
       setEditing(true);
