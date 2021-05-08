@@ -1,37 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { BrowserRouter as Router } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import Routes from '../helpers/routes';
 import './App.scss';
+import firebaseConfig from '../helpers/apiKeys';
+import { getPlayers } from '../helpers/data/playerData';
+
+firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+  const [user, setUser] = useState(null);
+  const [players, setPlayers] = useState([]);
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
-  };
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((authed) => {
+      if (authed) {
+        const userObj = {
+          fullName: authed.displayName,
+          profileImage: authed.photoURL,
+          uid: authed.uid,
+          user: authed.email.split('@')[0]
+        };
+        setUser(userObj);
+      } else if (user || user === null) {
+        setUser(false);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    getPlayers(user).then((response) => setPlayers(response));
+  }, []);
 
   return (
-    <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
-    </div>
+   <>
+   <Router>
+     <NavBar
+     user={user}
+     />
+     <Routes
+     players={players}
+     setPlayers={setPlayers}
+     user={user}
+     />
+   </Router>
+   </>
   );
 }
 
