@@ -45,6 +45,8 @@ function PlayerCard({
       position={position}
       user={user}
       uid={uid}
+      editing={editing}
+      setEditing={setEditing}
     />
   }
       </Card>
