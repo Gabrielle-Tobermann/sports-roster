@@ -17,7 +17,9 @@ function AddPlayerForm(
     setPlayers,
     uid,
     user,
-    firebaseKey
+    firebaseKey,
+    editing,
+    setEditing,
   }
 ) {
   const [player, setPlayer] = useState({
@@ -37,9 +39,9 @@ function AddPlayerForm(
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(player.firebaseKey);
     if (player.firebaseKey) {
       updatePlayer(player, user).then((playerObj) => setPlayers(playerObj));
+      setEditing(true);
     } else {
       addPlayer(player, user).then((playerObj) => setPlayers(playerObj));
     }
@@ -60,7 +62,7 @@ function AddPlayerForm(
         <Label for="image">Photo:</Label>
         <Input type="text" name="imageUrl" id="playerImage" value={player.imageUrl} onChange={handleInputChange} placeholder="Enter the player's photo" />
       </FormGroup>
-      <Button type="submit" onClick={handleSubmit}>Submit New Player</Button>
+      <Button color="primary" type="submit" onClick={handleSubmit}>{editing ? 'Update Player' : 'Submit New Player'}</Button>
       </Form>
     </>
   );
@@ -73,7 +75,9 @@ AddPlayerForm.propTypes = {
   uid: PropTypes.string,
   setPlayers: PropTypes.func,
   user: PropTypes.any,
-  firebaseKey: PropTypes.string
+  firebaseKey: PropTypes.string,
+  editing: PropTypes.bool,
+  setEditing: PropTypes.func
 };
 
 export default AddPlayerForm;
