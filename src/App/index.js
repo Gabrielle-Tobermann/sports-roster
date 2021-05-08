@@ -30,7 +30,6 @@ function App() {
     });
   }, []);
 
-  console.warn('user', user);
   useEffect(() => {
     getPlayers(user).then((response) => setPlayers(response));
   }, []);

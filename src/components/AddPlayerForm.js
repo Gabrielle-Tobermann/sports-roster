@@ -63,7 +63,7 @@ function AddPlayerForm(
         <Label for="image">Photo:</Label>
         <Input type="text" name="imageUrl" id="playerImage" value={player.imageUrl} onChange={handleInputChange} placeholder="Enter the player's photo" />
       </FormGroup>
-      <Button type="submit" onClick={handleSubmit}>{editing ? 'Update Player' : 'Submit New Player'}</Button>
+      <Button color="primary" type="submit" onClick={handleSubmit}>{editing ? 'Update Player' : 'Submit New Player'}</Button>
       </Form>
     </>
   );

@@ -4,12 +4,12 @@ import AddPlayerForm from '../components/AddPlayerForm';
 
 function AddPlayer({ setPlayers, user }) {
   return (
-    <>
+    <div className="add-player-view">
      <AddPlayerForm
      setPlayers={setPlayers}
      user={user}
      />
-    </>
+    </div>
   );
 }
 

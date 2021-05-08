@@ -31,8 +31,8 @@ function PlayerCard({
        <Card>
         <CardImg top width="100%" src={imageUrl} alt="Card image cap" />
         <CardBody>
-          <CardTitle tag="h5">{name}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{position}</CardSubtitle>
+          <CardTitle className="text-primary" tag="h5">{name}</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-dark">{position}</CardSubtitle>
           <Button className="card-button" color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
           <Button className="card-button" color="primary" onClick={() => handleClick('edit')}>Edit Player</Button>
         </CardBody>
