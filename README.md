@@ -12,6 +12,9 @@ This app allows users to keep track of their soccer team and players. They must 
 - Form to submit new team 
 - Ability to add, update and delete players 
 
+## Loom video
+https://www.loom.com/share/fc739df510af479190463dbbc7dea501
+
 ## Screenshots
 ![sports-roster22](https://user-images.githubusercontent.com/76187279/117546994-cced9200-aff2-11eb-97b9-b7d203a3e499.png)
 ![sports-roster3](https://user-images.githubusercontent.com/76187279/117546826-0f629f00-aff2-11eb-9609-4c2c4ee7af35.png)
